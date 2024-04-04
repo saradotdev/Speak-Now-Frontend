@@ -1,0 +1,34 @@
+.record-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.camera{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+
+.recording-button{
+    font-family: Montserrat !important;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center !important;
+    float:right !important;
+    border: 2px solid #a772ea !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    width:fit-content;
+    padding: 1%;
+    border-radius: 20px;
+}
+
+.recording-button:hover{
+    background-color:  #a772ea  !important;
+    font-weight: 800;
+}
