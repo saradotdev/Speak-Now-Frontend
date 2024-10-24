@@ -22,7 +22,7 @@ const VideoRecorder = () => {
     const [start_val, set_start_val] = useState(0);
     const [end_val, set_end_val] = useState(0);
     const [set_vid] = useState();
-    const [set_vid_duration] = useState(0);
+    const [, set_vid_duration] = useState(0);
     const [dataUrl, setDataUrl] = useState();
     const [processing, setProcessing] = useState(false);
     const [progress, setProgress] = useState();
@@ -55,7 +55,7 @@ const VideoRecorder = () => {
     async function handleClick(event) {
         setProcessing(true);
         await ffmpeg.load();
-        ffmpeg.FS("writeFile", "in.avi", await fetchFile(recordedVideo));
+        await ffmpeg.FS("writeFile", "in.avi", await fetchFile(recordedVideo));
         await ffmpeg.run(
             "-ss",
             secondsToTimeStamp(start_val),
@@ -66,7 +66,7 @@ const VideoRecorder = () => {
             "out.mp4",
         );
         setProgress(100);
-        data = ffmpeg.FS("readFile", "out.mp4");
+        data = await ffmpeg.FS("readFile", "out.mp4");
         const dataUrl = URL.createObjectURL(
             new Blob([data.buffer], { type: "video/mp4" }),
         );
